@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Vice — Cover Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h1>Neon Vice</h1>
+    <p class="tagline">Turn your photos into a sunset-boulevard poster. Everything runs in this page — no uploads, no network.</p>
+
+    <fieldset>
+      <legend>1 · Photos</legend>
+      <p class="hint">Load up to three photos, or pick a sample. Each panel of the cover uses one of them.</p>
+      <div class="slot" data-slot="A">
+        <span class="slot-name">Photo A</span>
+        <label class="file">Choose file <input type="file" accept="image/*" data-photo="A"></label>
+        <select data-sample="A" aria-label="Sample photo A">
+          <option value="">Sample…</option>
+          <option value="sunset-driver" selected>Sunset driver</option>
+          <option value="boulevard-walk">Boulevard walk</option>
+          <option value="pier">Pier</option>
+          <option value="boulevard">Boulevard</option>
+        </select>
+      </div>
+      <div class="slot" data-slot="B">
+        <span class="slot-name">Photo B</span>
+        <label class="file">Choose file <input type="file" accept="image/*" data-photo="B"></label>
+        <select data-sample="B" aria-label="Sample photo B">
+          <option value="">Sample…</option>
+          <option value="sunset-driver">Sunset driver</option>
+          <option value="boulevard-walk" selected>Boulevard walk</option>
+          <option value="pier">Pier</option>
+          <option value="boulevard">Boulevard</option>
+        </select>
+      </div>
+      <div class="slot" data-slot="C">
+        <span class="slot-name">Photo C</span>
+        <label class="file">Choose file <input type="file" accept="image/*" data-photo="C"></label>
+        <select data-sample="C" aria-label="Sample photo C">
+          <option value="">Sample…</option>
+          <option value="sunset-driver">Sunset driver</option>
+          <option value="boulevard-walk">Boulevard walk</option>
+          <option value="pier" selected>Pier</option>
+          <option value="boulevard">Boulevard</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Layout &amp; size</legend>
+      <div class="row" role="group" aria-label="Layout">
+        <button type="button" data-layout="poster" class="on">Poster · 3 panels</button>
+        <button type="button" data-layout="duo">Duo · 2 panels</button>
+        <button type="button" data-layout="hero">Hero · full photo</button>
+      </div>
+      <div class="row" role="group" aria-label="Export size">
+        <button type="button" data-size="square">1080 × 1080</button>
+        <button type="button" data-size="portrait">1080 × 1350</button>
+        <button type="button" data-size="wide" class="on">1920 × 1080</button>
+      </div>
+      <div class="row" role="group" aria-label="Colour grade">
+        <button type="button" data-grade="sunset" class="on">Sunset</button>
+        <button type="button" data-grade="neon">Neon</button>
+        <button type="button" data-grade="clean">Clean</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · Selected panel</legend>
+      <p class="hint">Click a panel in the preview to select it, then drag the photo to move it.</p>
+      <p id="panel-label" class="panel-label">Panel 1 · Photo A</p>
+      <div class="row" role="group" aria-label="Photo for selected panel">
+        <button type="button" data-panel-photo="A" class="on">A</button>
+        <button type="button" data-panel-photo="B">B</button>
+        <button type="button" data-panel-photo="C">C</button>
+      </div>
+      <label>Zoom <input id="zoom" type="range" min="1" max="2.5" step="0.05" value="1.15"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>4 · Caption</legend>
+      <label>Title <input id="title" type="text" maxlength="28" value="SUNSET HEIST"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="60" value="ONE LAST JOB ON THE BOULEVARD"></label>
+      <div class="row" role="group" aria-label="Title colour">
+        <button type="button" data-color="#ffffff" class="swatch on" style="--c:#ffffff" aria-label="White title">White</button>
+        <button type="button" data-color="#ffd60a" class="swatch" style="--c:#ffd60a" aria-label="Yellow title">Yellow</button>
+        <button type="button" data-color="#ff5fa2" class="swatch" style="--c:#ff5fa2" aria-label="Pink title">Pink</button>
+        <button type="button" data-color="#5ff2ff" class="swatch" style="--c:#5ff2ff" aria-label="Cyan title">Cyan</button>
+      </div>
+      <div class="row" role="group" aria-label="Title position">
+        <button type="button" data-place="bottom" class="on">Title at bottom</button>
+        <button type="button" data-place="top">Title at top</button>
+      </div>
+    </fieldset>
+
+    <button id="export" type="button" class="export">Export PNG</button>
+    <p id="status" role="status"></p>
+    <p class="fine">All artwork is drawn here in your browser. An original design, not affiliated with Rockstar Games.</p>
+  </section>
+  <section class="stage" aria-label="Cover preview">
+    <canvas id="preview" width="960" height="540" aria-label="Cover preview"></canvas>
+    <p class="hint">Drag a panel’s photo to reposition it · Scroll over the preview to zoom the selected panel.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
